@@ -27,21 +27,12 @@
     </div> 
     
     <div hidden=true id="sensorLimitBox">
-        <form action="javascript:defineSensorLimits()">
         <div id="sensorLimitsArray"></div><br>
-        <input type="submit" id="defineSensorLimitsBtn" value="Choose sensors limits"/>
-        </form>
+        <button id="defineSensorLimitsBtn" onclick="defineSensorLimits()">Choose sensors limits</button>
     </div> 
-
-    <form hidden=true action="get_sensors" method="POST">  
-        First Name: <input type="text" name="first_name"><br>  
-        Last Name: <input type="object" name="last_name" value="{test: 'test'}"><br> 
-        Device: <input type="object" name="gdxDeviceConnected" id=gdxDeviceConnected><br> 
-    <input type="submit" value="Submit">  
       
-          
-    <pre id="output"></pre>
-    <pre id="sensorAlert"></pre>
+    <p id="output"></p>
+    <p id="sensorAlert"></p>
 
     <script src= "device_utils.js"></script>
     <script src= "index_utils.js"></script>

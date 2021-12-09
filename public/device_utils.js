@@ -4,7 +4,6 @@ const bleBtn = document.querySelector('#ble')
 const bleLabel = document.querySelector('#ble_label')
 const connectDeviceBtn = document.querySelector('#connectDeviceBtn')
 const connectionBox = document.querySelector('#connectionBox')
-const output = document.querySelector('#output')
 const gdxDeviceConnected = document.querySelector('#gdxDeviceConnected')
 
 const sensorArrayBox = document.querySelector('#sensorArrayBox')
@@ -14,9 +13,8 @@ const sensorLimitBox = document.querySelector('#sensorLimitBox')
 const sensorLimitsArray = document.querySelector('#sensorLimitsArray')
 const defineSensorLimitsBtn = document.querySelector('#defineSensorLimitsBtn')
 
-const sensorAlert = document.querySelector('#defineSensorLimitsBtn')
-
-
+const output = document.querySelector('#output')
+const sensorAlert = document.querySelector('#sensorAlert')
 
 //import godirect from "./node_modules/@vernier/godirect/dist/godirect.min.umd.js"
 
@@ -92,7 +90,6 @@ function choosenSensors() {
         sensorLimitBox.hidden = false
 
         gdxDevice.start(2000)
-        console.log(gdxDevice.sensors)
         gdxDevice.sensors.forEach(sensor => {
             if (document.getElementById(sensor.name).checked){
                 sensor.enabled = true
@@ -140,6 +137,8 @@ function defineSensorLimits () {
                 sensors_to_be_watched_map.set(sensor.id, sensor)
             }
         })
+
+        //sensorLimitBox.hidden = false
 
     } catch (err) {
         console.log(err)

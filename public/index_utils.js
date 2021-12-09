@@ -1,6 +1,5 @@
 function checkValue(sensor) {
     try {
-        console.log(sensor.value)
         sensor.alert = false
         if (sensor.logic == 'AND'){
             if (sensor.bigger_than_value < sensor.value
@@ -24,10 +23,9 @@ function checkValue(sensor) {
         }
 
         if(sensor.alert){
-            console.log(sensor.name)
-            sensor.alert += 'Timestamp: ' + new Date()
-            sensorAlert.textContent += sensor.alert
-            console.log(sensor.id)
+            sensor.alert += `\nTimestamp: ` + new Date()
+            sensorAlert.textContent += sensor.alert + `\n\n`
+
 
             if(sensor.email_alerts)
                 sendDeviceToAPI(sensor.alert) //to be emailed
