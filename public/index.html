@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Watchguard</title>
+  <meta charset="utf-8"> 
+    <!--import Go Direct library-->
+    <script src="./node_modules/@vernier/godirect/dist/godirect.min.umd.js"></script>
+    <link  href="style.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico">
+  
+  </head>
+  
+  <body>
+    <p id="connectionBox">
+        <button id="connectDeviceBtn">  Connect device  </button><br><br>
+        <input type="radio" id="ble" name="type" value="1" checked>
+        <label id="ble_label" for="ble"> Bluetooth </label>
+        <input type="radio" id="usb" name="type" value="0">
+        <label id="usb_label" for="usb"> USB </label><br><br>
+    </p>
+      
+    <div id="sensor_array"></div>
+    <div>
+        <button  hidden=true class="button_start" id="choose-sensors" onclick="choosenSensors()">Choose sensors</button>
+    </div> 
+    <div>
+          
+        <pre id="output"></pre>
+  
+    </div>
+    <script src= "config.js"></script>
+    <script src= "device_utils.js"></script>
+    <script src= "index_utils.js"></script>
+    <script src= "index.js"></script>
+
+  </body>
+  
+  <style>
+  </style> 
+  </html>
+  
+  

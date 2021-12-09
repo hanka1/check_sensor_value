@@ -1,0 +1,1 @@
+connectDeviceBtn.addEventListener('click', connectDevice )
