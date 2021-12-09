@@ -17,16 +17,15 @@ let transporter = nodemailer.createTransport({
     }
 })
 
-  
+
 function mailOptions (text) {
-    let msg = {
+    return {
         from: config.EMAIL_ADDRESS_FROM,
         to: config.EMAIL_ADDRESS_TO,
         subject: config.EMAIL_SUBJECT,
-        text: text
+        text: JSON.stringify(text)
     }
 
-    return JSON.stringify(msg)
 }
 
 let email_interval = true

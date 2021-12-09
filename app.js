@@ -20,15 +20,8 @@ app.get("/", (req,res) => {
 
 app.post("/get_sensors", (req, res) => {
     console.log(req.body)
-    //email.sendEmail(req.body)
+    email.sendEmail(req.body)
 
-    email.transporter.sendMail(email.mailOptions(req.body), (error, info) => {
-        if (error) {
-        console.log(error)
-        } else {
-        console.log('Email sent: ' + info.response)
-        }
-    })
 })
 
 app.listen(PORT,()=>{
