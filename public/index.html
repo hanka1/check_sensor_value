@@ -20,16 +20,25 @@
         <label id="usb_label" for="usb"> USB </label><br><br>
     </p>
       
-    <div id="sensor_array"></div>
+    <div id="sensorArray"></div>
     <div>
-        <button  hidden=true class="button_start" id="choose-sensors" onclick="choosenSensors()">Choose sensors</button>
+        <button class="button_start" id="choose-sensors" onclick="choosenSensors()">Choose sensors</button>
+
     </div> 
     <div>
+
+
+    <form hidden=true action="get_sensors" method="POST">  
+        First Name: <input type="text" name="first_name"><br>  
+        Last Name: <input type="object" name="last_name" value="{test: 'test'}"><br> 
+        Device: <input type="object" name="gdxDeviceConnected" id=gdxDeviceConnected><br> 
+    <input type="submit" value="Submit">  
+      
+
           
         <pre id="output"></pre>
   
     </div>
-    <script src= "config.js"></script>
     <script src= "device_utils.js"></script>
     <script src= "index_utils.js"></script>
     <script src= "index.js"></script>

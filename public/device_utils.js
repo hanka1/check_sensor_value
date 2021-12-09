@@ -5,11 +5,13 @@ const bleLabel = document.querySelector('#ble_label')
 const connectDeviceBtn = document.querySelector('#connectDeviceBtn')
 const connectionBox = document.querySelector('#connectionBox')
 const output = document.querySelector('#output')
-const sensorArray = document.querySelector('#sensor_array')
+const sensorArray = document.querySelector('#sensorArray')
+const gdxDeviceConnected = document.querySelector('#gdxDeviceConnected')
 
 //import godirect from "./node_modules/@vernier/godirect/dist/godirect.min.umd.js"
 
-let gdxDevice
+let gdxDevice = undefined
+let sensors_to_be_watched = new Map
 
 //to select a device
 async function connectDevice () {
@@ -56,13 +58,14 @@ function chooseSensors (device) {
         //to show all sensors
         let i = 0
         device.sensors.forEach(sensor => {
-            sensor.i = i
+            sensor.id = i
             sensorArray.innerHTML += `<input type="checkbox" id="${sensor.name}" value="${sensor.i}">`
             sensorArray.innerHTML += `<label for="${sensor.name}"> ${sensor.name}</label><br>`
             i++
         })
 
-        document.getElementById("choose-sensors").hidden = false
+        sensorArray.hidden = false
+  
 
     } catch (err) {
         console.log(err)
@@ -72,19 +75,26 @@ function chooseSensors (device) {
 //choose device sensors to be used for measurements
 function choosenSensors() {
     try {
-        
+
+        gdxDevice.start(2000)
         gdxDevice.sensors.forEach(sensor => {
             if (document.getElementById(sensor.name).checked){
                 sensor.enabled = true
                 sensor.emit('state-changed', sensor)
+                //TODO add checked value from index html
+                //todo ask Pavel for && || request 
+                sensor.bigger_than_value = 5
+                sensor.less_than_value = -20
+                sensors_to_be_watched.set(sensor.id, sensor)
             } else {
                 sensor.enabled = false
                 sensor.emit('state-changed', sensor)
             }
-        }) 
+        })
 
         document.getElementById("choose-sensors").hidden = true
-        output.textContent += ('TODO')
+        output.textContent += ('\nclick to submit\n')
+
 
     } catch (err) {
         console.log(err)
