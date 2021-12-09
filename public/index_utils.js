@@ -5,10 +5,10 @@ function checkValue(sensor) {
             //|| 
             //TODO < > && ||
             //TODO max min value to html soose sensor table
+            //TODO send info to browser
             //sensor.less_than_value <  sensor.value){
-                sendDeviceToAPI(sensor)
+                sendDeviceToAPI(sensor) //to be emailed
         }
-
 
     } catch (err) {
         console.log(err)
