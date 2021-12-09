@@ -17,9 +17,10 @@ app.use(bodyParser.json());
 app.get("/", (req,res) => {
     res.sendFile(path.join(__dirname, './public/index.html' ))
 })
+
 app.post("/get_sensors", (req, res) => {
-    //todo message format
-    //console.log(req.body.device_name)
+    console.log(req.body)
+    //email.sendEmail(req.body)
 
     email.transporter.sendMail(email.mailOptions(req.body), (error, info) => {
         if (error) {
@@ -28,7 +29,6 @@ app.post("/get_sensors", (req, res) => {
         console.log('Email sent: ' + info.response)
         }
     })
-
 })
 
 app.listen(PORT,()=>{

@@ -29,8 +29,31 @@ function mailOptions (text) {
     return JSON.stringify(msg)
 }
 
+let email_interval = true
+function sendEmail (text) {
+    try {
+        if (email_interval){
+            transporter.sendMail(mailOptions(text), (error, info) => {
+                if (error) {
+                    console.log(error)
+                } else {
+                    console.log('Email sent: ' + info.response)
+                }
+            })
+            email_interval = false
+            setTimeout(() => { email_interval = true }, 1000*60*config.EMAIL_TIME_INTERVAL)
+        } else {
+
+        }
+
+    } catch (err){ 
+        console.log(err)
+    }
+}
+
   
 export default {
+      sendEmail,
       transporter,
       mailOptions,
 }

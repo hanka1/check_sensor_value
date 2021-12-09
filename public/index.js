@@ -14,7 +14,7 @@ function checkDeviceValues () {
                 sensor.on('value-changed', (sensor) => {
                     //to check if sensor is set to be watched
                     
-                    if (sensors_to_be_watched.has(sensor.id))
+                    if (sensors_to_be_watched_map.has(sensor.id))
                         checkValue(sensor)
                 })
             })

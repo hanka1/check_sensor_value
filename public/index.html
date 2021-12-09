@@ -19,14 +19,19 @@
         <input type="radio" id="usb" name="type" value="0">
         <label id="usb_label" for="usb"> USB </label><br><br>
     </p>
-      
-    <div id="sensorArray"></div>
-    <div>
-        <button class="button_start" id="choose-sensors" onclick="choosenSensors()">Choose sensors</button>
-
+     
+    <div hidden=true id="sensorArrayBox">
+        
+        <div id="sensorArray"></div><br>
+        <button id="chooseSensorsBtn" onclick="choosenSensors()">Choose sensors</button>
     </div> 
-    <div>
-
+    
+    <div hidden=true id="sensorLimitBox">
+        <form action="javascript:defineSensorLimits()">
+        <div id="sensorLimitsArray"></div><br>
+        <input type="submit" id="defineSensorLimitsBtn" value="Choose sensors limits"/>
+        </form>
+    </div> 
 
     <form hidden=true action="get_sensors" method="POST">  
         First Name: <input type="text" name="first_name"><br>  
@@ -34,11 +39,10 @@
         Device: <input type="object" name="gdxDeviceConnected" id=gdxDeviceConnected><br> 
     <input type="submit" value="Submit">  
       
-
           
-        <pre id="output"></pre>
-  
-    </div>
+    <pre id="output"></pre>
+    <pre id="sensorAlert"></pre>
+
     <script src= "device_utils.js"></script>
     <script src= "index_utils.js"></script>
     <script src= "index.js"></script>
